@@ -97,6 +97,13 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'crm_main.wsgi.application'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -153,7 +160,13 @@ except ImportError:
 LOGIN_REDIRECT_URL = 'dashboard'
 
 # This will print email in Console.
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = "Nsangi Guest Wing"
+EMAIL_HOST_USER = 'danielmark973@gmail.com'
+EMAIL_HOST_PASSWORD = 'ihoixmcucqoajnyv'
 
 from django.contrib.messages import constants as messages
 
